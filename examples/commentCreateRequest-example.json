@@ -1,7 +1,7 @@
 {
-  "content" : "string" ,
-  "context" : {
-    "type" : "string" ,
-    "value" : "string"
+  "content": "Comment body",
+  "context": {
+    "type": "text/plain",
+    "value": "Comment body"
   }
 }

@@ -1,8 +1,8 @@
 {
   "kind": "drive#commentReply",
-  "replyId": "AAAABGvGYkc",
-  "createdDate": "2017-01-26T22:27:31.702Z",
-  "modifiedDate": "2017-01-26T22:27:31.702Z",
+  "replyId": "AAAABGvGYko",
+  "createdDate": "2017-01-26T22:44:06.410Z",
+  "modifiedDate": "2017-01-26T22:44:06.410Z",
   "author": {
     "kind": "drive#user",
     "displayName": "John Doe",
@@ -11,7 +11,8 @@
     },
     "isAuthenticatedUser": true
   },
-  "htmlContent": "This is the reply",
-  "content": "This is the reply",
-  "deleted": false
+  "htmlContent": "Another replty",
+  "content": "Another replty",
+  "deleted": false,
+  "verb": "reopen"
 }

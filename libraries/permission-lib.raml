@@ -83,7 +83,7 @@ types:
         description: The ID of the user this permission refers to, and identical to the `permissionId` in the About and Files resources. When making a `drive.permissions.insert` request, exactly one of the `id` or `value` fields must be specified
       role:
         type: string
-        required: true
+        required: false
         description: |
           The primary role for this user. Allowed values are:
           - owner
@@ -96,7 +96,7 @@ types:
         items: [string]
       type:
         type: string
-        required: true
+        required: false
         description: |
           The account type. Allowed values are:
           - user
@@ -113,7 +113,7 @@ types:
         description: Whether the link is required for this permission
   PermissionList:
     type: object
-    properties: 
+    properties:
       kind:
         type: string
         required: false

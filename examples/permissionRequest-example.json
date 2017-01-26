@@ -1,10 +1,9 @@
 {
-  "id" : "string" ,
-  "role" : "string" ,
-  "additionalRoles" : [
-    "string"
-  ] ,
-  "type" : "string" ,
-  "value" : "string" ,
-  "withLink" : "boolean"
+  "role": "writer",
+  "type": "user",
+  "additionalRoles": [
+    "commenter"
+  ],
+  "value": "email@domain.com",
+  "withLink": false
 }

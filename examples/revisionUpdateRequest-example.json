@@ -1,6 +1,6 @@
 {
-  "pinned" : "boolean" ,
-  "published" : "boolean" ,
-  "publishAuto" : "boolean" ,
-  "publishedOutsideDomain" : "boolean"
+  "pinned": false,
+  "published": false,
+  "publishAuto": false,
+  "publishedOutsideDomain": false
 }

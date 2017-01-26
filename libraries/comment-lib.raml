@@ -3,22 +3,24 @@
 types:
   User: !include ../types/user.raml
   ReplyWritable:
-    properties: 
-      content: 
+    properties:
+      content:
         type: string
-        description: | 
-          The plain text content used to create this reply. 
-          This is not HTML safe and should only be used as a starting point to make edits to a 
+        required: false
+        description: |
+          The plain text content used to create this reply.
+          This is not HTML safe and should only be used as a starting point to make edits to a
           reply's content. This field is required on inserts if no verb is specified (resolve/reopen).
       verb:
+        required: false
         description: |
           The action this reply performed to the parent comment. When creating a new reply this is the action to be perform to the parent comment. Possible values are:
-          
+
           - **resolve** - To resolve a comment.
           - **reopen** - To reopen (un-resolve) a comment.
   Reply:
     type: ReplyWritable
-    properties: 
+    properties:
       kind:
         type: string
         description: This is always drive#commentReply.
@@ -41,15 +43,14 @@ types:
         description: Whether this reply has been deleted. If a reply has been deleted the content will be cleared and this will only represent a reply that once existed.
         type: boolean
   CommentWritable:
-    properties: 
-      type: string
+    properties:
       content:
         description: The plain text content used to create this comment. This is not HTML safe and should only be used as a starting point to make edits to a comment's content.
       context:
         description: The context of the file which is being commented on.
         type: object
-        properties: 
-          type: 
+        properties:
+          type:
             type: string
             description: The MIME type of the context snippet.
           value:
@@ -57,7 +58,7 @@ types:
             description: Data representation of the segment of the file being commented on. In the case of a text file for example, this would be the actual text that the comment is about.
   Comment:
     type: CommentWritable
-    properties: 
+    properties:
       kind:
         type: string
         description: This is always drive#comment.
@@ -65,6 +66,7 @@ types:
         enum: [drive#comment]
       selfLink:
         description: A link back to this comment.
+        required: false
       commentId:
         description: The ID of the comment.
       createdDate:
@@ -84,7 +86,7 @@ types:
       status:
         description: |
           The status of this comment. Status can be changed by posting a reply to a comment with the desired status.
-          
+
           - **open** - The comment is still open.
           - **resolved** - The comment has been resolved by one of its replies.
       anchor:
@@ -97,7 +99,7 @@ types:
         type: Reply[]
         description: Replies to this post.
   CommentList:
-    properties: 
+    properties:
       kind:
         type: string
         default: drive#commentList
@@ -105,12 +107,14 @@ types:
         description: This is always drive#commentList.
       nextPageToken:
         type: string
+        required: false
         description: The token to use to request the next page of results.
       selfLink:
         type: string
         description: A link back to this list.
       nextLink:
         type: string
+        required: false
         description: A link to the next page of comments.
       items:
         type: array
@@ -118,7 +122,7 @@ types:
         description: The actual list of comments.
         items: [Comment]
   ReplyList:
-    properties: 
+    properties:
       kind:
         type: string
         default: drive#commentReplyList
