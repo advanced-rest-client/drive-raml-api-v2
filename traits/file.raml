@@ -1,0 +1,35 @@
+#%RAML 1.0 Trait
+
+description: A list of URL properties that requests that updates a file have
+displayName: File update query parameters
+
+queryParameters: 
+  convert:
+    type: boolean
+    description: |
+      Whether to convert this file to the corresponding Google Docs format. (Default: false)
+    default: false
+  ocr:
+    type: boolean
+    description: |
+      Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads. (Default: false)
+    default: false
+  ocrLanguage:
+    type: string
+    description: If ocr is true, hints at the language to use. Valid values are BCP 47 codes.
+  pinned:
+    type: boolean
+    description: |
+      Whether to pin the head revision of the uploaded file. A file can have a maximum of 200 pinned revisions. (Default: false)
+    default: false
+  timedTextLanguage:
+    type: string
+    description: The language of the timed text.
+  timedTextTrackName:
+      type: string
+      description: The timed text track name.
+  # useContentAsIndexableText:
+  #   type: boolean
+  #   description: |
+  #     Whether to use the content as indexable text. (Default: false)
+  #   default: false

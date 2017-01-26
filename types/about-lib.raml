@@ -1,0 +1,185 @@
+#%RAML 1.0 Library
+uses: 
+  User: !include user-lib.raml
+types:
+  ImportFormat:
+    properties: 
+      source:
+        type: string
+        description: The imported file's content type to convert from.
+        required: true
+      targets:
+        description: The possible content types to convert to.
+        type: string[]
+        required: true
+  ExportFormat:
+    properties: 
+      source:
+        type: string
+        description: The content type to convert from.
+        required: true
+      targets:
+        description: The possible content types to convert to.
+        type: string[]
+        required: true
+  RoleSet:
+    properties: 
+      primaryRole: 
+        type: string
+        required: false
+        description: A primary permission role.
+      additionalRoles: 
+        type: string[]
+        required: false
+        description: The supported additional roles with the primary role.
+  AdditionalRoleInfo:
+    properties: 
+      type: 
+        type: string
+        required: false
+        description: The content type that this additional role info applies to.
+      roleSets: 
+        type: RoleSet[]
+        required: false
+        description: The supported additional roles per primary role.
+  Feature:
+    properties: 
+      featureName: 
+        type: string
+        required: false
+        description: The name of the feature.
+      featureRate: 
+        type: number
+        required: false
+        description: The request limit rate for this feature, in queries per second.
+  UploadSize:
+    properties: 
+      type:
+        type: string
+        required: false
+        description: The file type.
+      size: 
+        type: integer
+        required: false
+        description: The max upload size for this type.
+  ServiceQuota:
+    type: object
+    properties: 
+      serviceName: 
+        type: string
+        description: The service's name, e.g. DRIVE, GMAIL, or PHOTOS.
+      bytesUsed:
+        type: integer
+        description: The storage quota bytes used by the service.
+        minimum: 0
+  About:
+    type: object
+    properties:
+      kind:
+        type: string
+        required: false
+        description: This is always drive#app.
+        enum: [drive#app]
+      etag: 
+        type: string
+        required: false
+        description: The ETag of the item.
+      selfLink: 
+        type: string
+        required: false
+        description: A link back to this item.
+      name: 
+        type: string
+        required: false
+        description: The name of the current user.
+      user: 
+        type: User.User
+        required: false
+        description: The authenticated user.
+      quotaBytesTotal: 
+        type: number
+        required: false
+        description: The total number of quota bytes.
+      quotaBytesUsed: 
+        type: number
+        required: false
+        description: The number of quota bytes used by Google Drive.
+      quotaBytesUsedAggregate: 
+        type: number
+        required: false
+        description: The number of quota bytes used by all Google apps (Drive, Picasa, etc.).
+      quotaBytesUsedInTrash: 
+        type: number
+        required: false
+        description: The number of quota bytes used by trashed items.
+      quotaType: 
+        type: string
+        required: false
+        description: |
+          The type of the user's storage quota. Possible values are:
+          
+          - **LIMITED**
+          - **UNLIMITED**
+      quotaBytesByService: 
+        type: array
+        required: false
+        items: [ServiceQuota]
+        description: 
+      largestChangeId: 
+        type: integer
+        required: false
+        description: The largest change id.
+      remainingChangeIds: 
+        type: integer
+        required: false
+        description: The number of remaining change ids.
+      rootFolderId: 
+        type: string
+        required: false
+        description: The id of the root folder.
+      domainSharingPolicy: 
+        type: string
+        required: false
+        description: |
+          The domain sharing policy for the current user. Possible values are:
+          
+          - **allowed**
+          - **allowedWithWarning**
+          - **incomingOnly**
+          - **disallowed**
+      permissionId: 
+        type: string
+        required: false
+        description: The current user's ID as visible in the permissions collection.
+      importFormats: 
+        type: ImportFormat[]
+        required: false
+        description: The allowable import formats.
+      exportFormats: 
+        type: ExportFormat[]
+        required: false
+        description: The allowable export formats.
+      additionalRoleInfo: 
+        type: AdditionalRoleInfo[]
+        required: false
+        description: Information about supported additional roles per file type. The most specific type takes precedence.
+      features: 
+        type: Feature[]
+        required: false
+        description: List of additional features enabled on this account.
+      maxUploadSizes: 
+        type: UploadSize[]
+        required: false
+        description: List of max upload sizes for each file type. The most specific type takes precedence.
+      isCurrentAppInstalled: 
+        type: boolean
+        required: false
+        description: A boolean indicating whether the authenticated app is installed by the authenticated user.
+      languageCode: 
+        type: string
+        required: false
+        description: The user's language or locale code, as defined by BCP 47, with some extensions from Unicode's LDML format (http://www.unicode.org/reports/tr35/).
+      folderColorPalette: 
+        type: string[]
+        required: false
+        description: The palette of allowable folder colors as RGB hex strings.

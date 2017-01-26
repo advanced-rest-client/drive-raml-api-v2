@@ -1,0 +1,162 @@
+{
+  "kind" : "drive#fileList" ,
+  "etag" : "etag" ,
+  "selfLink" : "string" ,
+  "nextPageToken" : "string" ,
+  "nextLink" : "string" ,
+  "items" : [
+    {
+      "kind" : "drive#file" ,
+      "id" : "string" ,
+      "etag" : "etag" ,
+      "selfLink" : "string" ,
+      "webContentLink" : "string" ,
+      "webViewLink" : "string" ,
+      "alternateLink" : "string" ,
+      "embedLink" : "string" ,
+      "openWithLinks" : {
+      } ,
+      "defaultOpenWithLink" : "string" ,
+      "iconLink" : "string" ,
+      "thumbnailLink" : "string" ,
+      "thumbnail" : {
+        "image" : "bytes" ,
+        "mimeType" : "string"
+      } ,
+      "title" : "string" ,
+      "mimeType" : "string" ,
+      "description" : "string" ,
+      "labels" : {
+        "starred" : true,
+        "hidden" : false,
+        "trashed" : false,
+        "restricted" : false,
+        "viewed" : true
+      } ,
+      "createdDate" : "2002-10-02T10:00:00-05:00",
+      "modifiedDate" : "2002-10-02T15:00:00Z",
+      "modifiedByMeDate" : "2002-10-02T15:00:00.05Z",
+      "lastViewedByMeDate" : "2002-10-02T10:00:00-05:00",
+      "markedViewedByMeDate" : "2002-10-02T10:00:00-05:00",
+      "sharedWithMeDate" : "2002-10-02T10:00:00-05:00",
+      "version" : 1,
+      "sharingUser" : {
+        "kind" : "drive#user" ,
+        "displayName" : "string" ,
+        "picture" : {
+          "url" : "string"
+        } ,
+        "isAuthenticatedUser" : true,
+        "permissionId" : "string" ,
+        "emailAddress" : "string"
+      } ,
+      "parents" : [
+        {
+          "kind" : "drive#parentReference" ,
+          "id" : "string" ,
+          "selfLink" : "string" ,
+          "parentLink" : "string" ,
+          "isRoot" : true
+        }
+      ] ,
+      "downloadUrl" : "string" ,
+      "exportLinks" : {
+      } ,
+      "indexableText" : {
+        "text" : "string"
+      } ,
+      "userPermission" : "permissions Resource" ,
+      "permissions" : [
+        {
+          "kind" : "drive#permission" ,
+          "etag" : "etag" ,
+          "id" : "string" ,
+          "selfLink" : "string" ,
+          "name" : "string" ,
+          "emailAddress" : "string" ,
+          "domain" : "string" ,
+          "role" : "string" ,
+          "additionalRoles" : [
+            "strings"
+          ] ,
+          "type" : "string" ,
+          "value" : "string" ,
+          "authKey" : "string" ,
+          "withLink" : true,
+          "photoLink" : "string"
+        }
+      ] ,
+      "originalFilename" : "string" ,
+      "fileExtension" : "string" ,
+      "md5Checksum" : "string" ,
+      "fileSize" : 123456,
+      "quotaBytesUsed" : 123456,
+      "ownerNames" : [
+        "string"
+      ] ,
+      "owners" : [
+        {
+          "kind" : "drive#user" ,
+          "displayName" : "string" ,
+          "picture" : {
+            "url" : "string"
+          } ,
+          "isAuthenticatedUser" : true,
+          "permissionId" : "string" ,
+          "emailAddress" : "string"
+        }
+      ] ,
+      "lastModifyingUserName" : "string" ,
+      "lastModifyingUser" : {
+        "kind" : "drive#user" ,
+        "displayName" : "string" ,
+        "picture" : {
+          "url" : "string"
+        } ,
+        "isAuthenticatedUser" : true,
+        "permissionId" : "string" ,
+        "emailAddress" : "string"
+      } ,
+      "editable" : true,
+      "copyable" : true,
+      "writersCanShare" : true,
+      "shared" : true,
+      "explicitlyTrashed" : true,
+      "appDataContents" : true,
+      "headRevisionId" : "string" ,
+      "folderColorRgb" : "string" ,
+      "imageMediaMetadata" : {
+        "width" : 1024,
+        "height" : 1024,
+        "rotation" : 0,
+        "location" : {
+          "latitude" : 21.54256,
+          "longitude" : 11.76524,
+          "altitude" : 0
+        } ,
+        "date" : "2002-10-02T15:00:00.05Z" ,
+        "cameraMake" : "string" ,
+        "cameraModel" : "string" ,
+        "exposureTime" : 1.5,
+        "aperture" : 0.5,
+        "flashUsed" : true,
+        "focalLength" : 5.4,
+        "isoSpeed" : 200,
+        "meteringMode" : "string" ,
+        "sensor" : "string" ,
+        "exposureMode" : "string" ,
+        "colorSpace" : "string" ,
+        "whiteBalance" : "string" ,
+        "exposureBias" : 0,
+        "maxApertureValue" : 0,
+        "subjectDistance" : 2,
+        "lens" : "string"
+      } ,
+      "videoMediaMetadata" : {
+        "width" : 800,
+        "height" : 600,
+        "durationMillis" : 1215000
+      }
+    }
+  ]
+}
