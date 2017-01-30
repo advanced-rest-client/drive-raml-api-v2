@@ -114,6 +114,8 @@ documentation:
           -**DEFAULT**: The items that the user has accessed.
           - **DOMAIN**: Items shared to the user's domain.
         example: DOMAIN
+        type: string
+        required: false
       maxResults:
         description: |
           Maximum number of files to return. Acceptable values are `0` to `1000`, inclusive.
@@ -123,6 +125,7 @@ documentation:
         example: 25
         minimum: 0
         maximum: 1000
+        required: false
       orderBy:
         type: string
         description: |
@@ -133,15 +136,19 @@ documentation:
 
           Please note that there is a current limitation for users with approximately one million files in which the requested sort order is ignored.
         example: orderBy=folder,modifiedDate desc,title
+        required: false
       pageToken:
         description: Page token for files.
+        required: false
       q:
         type: string
+        required: false
         description: |
           Query string for searching files.
           See [Searching for files](docs/searching-for-files.md) for more information about supported fields and operations.
       spaces:
         type: string
+        required: false
         description: A comma-separated list of spaces to query. Supported values are `drive`, `appDataFolder` and `photos`.
     responses:
       200:
@@ -164,8 +171,10 @@ documentation:
           type: boolean
           default: false
           example: false
+          required: false
         projection:
           type: string
+          required: false
           description: |
             This parameter is deprecated and has no function.
 
@@ -173,6 +182,7 @@ documentation:
             "BASIC": Deprecated
             "FULL": Deprecated
         revisionId:
+          required: false
           type: string
           description: Specifies the Revision ID that should be downloaded. Ignored unless alt=media is specified.
         updateViewedDate:
@@ -180,6 +190,7 @@ documentation:
           type: boolean
           default: false
           example: true
+          required: false
       responses:
         200:
           body:
@@ -191,9 +202,12 @@ documentation:
       description: Updates file metadata. This method supports patch semantics.
       queryParameters:
         addParents:
+          required: false
+          type: string
           description: Comma-separated list of parent IDs to add.
         modifiedDateBehavior:
           type: string
+          required: false
           description: |
             Determines the behavior in which modifiedDate is updated. This overrides setModifiedDate.
 
@@ -209,18 +223,22 @@ documentation:
           type: boolean
           default: true
           example: true
+          required: false
         removeParents:
           description: Comma-separated list of parent IDs to remove.
+          required: false
         setModifiedDate:
           description: "Whether to set the modified date with the supplied modified date. (Default: false)"
           type: boolean
           default: false
           example: true
+          required: false
         updateViewedDate:
           description: "Whether to update the view date after successfully updating the file. (Default: true)"
           type: boolean
           default: false
           example: true
+          required: false
       body:
         application/json:
           type: DriveFile.DriveFile
@@ -259,23 +277,28 @@ documentation:
           example: multipart
         addParents:
           description: Comma-separated list of parent IDs to add.
+          required: false
         newRevision:
           description: "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous revisions are preserved (causing increased use of the user's data storage quota). (Default: true)"
           type: boolean
           default: true
           example: true
+          required: false
         removeParents:
           description: Comma-separated list of parent IDs to remove.
+          required: false
         setModifiedDate:
           description: "Whether to set the modified date with the supplied modified date. (Default: false)"
           type: boolean
           default: false
           example: true
+          required: false
         updateViewedDate:
           description: "Whether to update the view date after successfully updating the file. (Default: true)"
           type: boolean
           default: false
           example: true
+          required: false
       body:
         application/json:
           type: DriveFile.DriveFileCreate
@@ -406,11 +429,13 @@ documentation:
         queryParameters:
           emailMessage:
             description: A custom message to include in notification emails.
+            required: false
           sendNotificationEmails:
             description: "Whether to send notification emails when sharing to users or groups. This parameter is ignored and an email is sent if the role is owner. (Default: true)"
             type: boolean
             default: true
             example: false
+            required: false
         body:
           application/json:
             type: PermissionLib.PermissionInsert
@@ -446,11 +471,13 @@ documentation:
               type: boolean
               default: false
               example: false
+              required: false
             removeExpiration:
               type: boolean
               default: false
               example: false
               description: Whether to remove the expiration date.
+              required: false
           body:
             application/json:
               type: PermissionLib.PermissionInsert
@@ -481,11 +508,13 @@ documentation:
               type: boolean
               default: false
               example: false
+              required: false
             removeExpiration:
               type: boolean
               default: false
               example: false
               description: Whether to remove the expiration date.
+              required: false
           body:
             application/json:
               type: PermissionLib.PermissionInsert
@@ -558,6 +587,7 @@ documentation:
         queryParameters:
           updatedMin:
             type: datetime
+            required: false
             description: Only discussions that were updated after this timestamp will be returned. Formatted as an RFC 3339 timestamp.
         responses:
           200:
@@ -590,6 +620,7 @@ documentation:
               type: boolean
               default: false
               example: true
+              required: false
           responses:
             200:
               body:
@@ -659,6 +690,7 @@ documentation:
                   type: boolean
                   default: false
                   example: true
+                  required: false
               responses:
                 200:
                   body:
@@ -702,6 +734,7 @@ documentation:
             description: The revision of the Realtime API data model to export. Revisions start at 1 (the initial empty data model) and are incremented with each change. If this parameter is excluded, the most recent data model will be returned.
             type: integer
             example: 5
+            required: false
         responses:
           200:
             body:
@@ -727,6 +760,8 @@ documentation:
             enum: [media, resumable]
             example: media
           baseRevision:
+            type: string
+            required: false
             description: The revision of the model to diff the uploaded model against. If set, the uploaded model is diffed against the provided revision and those differences are merged with any changes made to the model after the provided revision. If not set, the uploaded model replaces the current model on the server.
     /properties:
       get:
@@ -820,10 +855,13 @@ documentation:
           type: integer
           default: 100
           example: 25
+          required: false
         pageToken:
           description: Page token for children.
+          required: false
         q:
           description: Query string for searching children. See Searching for files for more information about supported fields and operations.
+          required: false
       responses:
         200:
           body:
@@ -856,14 +894,17 @@ documentation:
         type: boolean
         default: true
         example: true
+        required: false
       maxChangeIdCount:
         description: Maximum number of remaining change IDs to count
         type: integer
         example: 700000
+        required: false
       startChangeId:
         description: Change ID to start counting from when calculating number of remaining change IDs
         type: integer
         example: 700000
+        required: false
     responses:
       200:
         body:
@@ -884,12 +925,15 @@ documentation:
         type: boolean
         default: true
         example: true
+        required: false
       startChangeId:
         description: Change ID to start listing changes from.
         type: integer
         example: 700000
+        required: false
       spaces:
         type: string
+        required: false
         description: |
           A comma-separated list of spaces to query. Supported values are:
 
@@ -920,6 +964,7 @@ documentation:
       queryParameters:
         spaces:
           type: string
+          required: false
           description: |
             A comma-separated list of spaces to query. Supported values are:
 
@@ -956,12 +1001,16 @@ documentation:
     description: "Lists a user's installed apps."
     queryParameters:
       appFilterExtensions:
+        required: false
+        type: string
         description: A comma-separated list of file extensions for open with filtering. All apps within the given app query scope which can open any of the given file extensions will be included in the response. If appFilterMimeTypes are provided as well, the result is a union of the two resulting app lists.
       appFilterMimeTypes:
+        required: false
         description: A comma-separated list of MIME types for open with filtering. All apps within the given app query scope which can open any of the given MIME types will be included in the response. If appFilterExtensions are provided as well, the result is a union of the two resulting app lists.
       languageCode:
         description: A language or locale code, as defined by BCP 47, with some extensions from the Unicode LDML format.
         example: fr
+        required: false
     responses:
       200:
         body:
