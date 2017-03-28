@@ -3,6 +3,9 @@
 displayName: Labels
 description: A group of labels for the file.
 
+uses:
+  Annotations: ../libraries/annotations.raml
+
 properties:
   starred:
     type: boolean
@@ -10,6 +13,7 @@ properties:
     description: Whether this file is starred by the user
     example: true
   hidden:
+    (Annotations.deprecated):
     type: boolean
     required: false
     description: Deprecated

@@ -76,6 +76,10 @@
     "permissionId": "91827364558604565116",
     "emailAddress": "john.doe@gmail.com"
   },
+  "capabilities": {
+    "canCopy": true,
+    "canEdit": true
+  },
   "editable": true,
   "copyable": true,
   "writersCanShare": true,

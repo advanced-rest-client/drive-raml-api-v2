@@ -1,5 +1,5 @@
 #%RAML 1.0 Library
-  
+
 types:
   User: !include ../types/user.raml
   ImportFormat: !include ../types/import-format.raml
@@ -14,108 +14,108 @@ types:
       kind:
         type: string
         required: false
-        description: This is always drive#app.
-        enum: [drive#app]
-      etag: 
+        description: This is always drive#about.
+        enum: [drive#about]
+      etag:
         type: string
         required: false
         description: The ETag of the item.
-      selfLink: 
+      selfLink:
         type: string
         required: false
         description: A link back to this item.
-      name: 
+      name:
         type: string
         required: false
         description: The name of the current user.
-      user: 
+      user:
         type: User
         required: false
         description: The authenticated user.
-      quotaBytesTotal: 
-        type: number
+      quotaBytesTotal:
+        type: string
         required: false
         description: The total number of quota bytes.
-      quotaBytesUsed: 
-        type: number
+      quotaBytesUsed:
+        type: string
         required: false
         description: The number of quota bytes used by Google Drive.
-      quotaBytesUsedAggregate: 
-        type: number
+      quotaBytesUsedAggregate:
+        type: string
         required: false
         description: The number of quota bytes used by all Google apps (Drive, Picasa, etc.).
-      quotaBytesUsedInTrash: 
-        type: number
+      quotaBytesUsedInTrash:
+        type: string
         required: false
         description: The number of quota bytes used by trashed items.
-      quotaType: 
+      quotaType:
         type: string
         required: false
         description: |
           The type of the user's storage quota. Possible values are:
-          
+
           - **LIMITED**
           - **UNLIMITED**
-      quotaBytesByService: 
+      quotaBytesByService:
         type: array
         required: false
-        items: [ServiceQuota]
-        description: 
-      largestChangeId: 
-        type: integer
+        items: ServiceQuota
+        description:
+      largestChangeId:
+        type: string
         required: false
         description: The largest change id.
-      remainingChangeIds: 
-        type: integer
+      remainingChangeIds:
+        type: string
         required: false
         description: The number of remaining change ids.
-      rootFolderId: 
+      rootFolderId:
         type: string
         required: false
         description: The id of the root folder.
-      domainSharingPolicy: 
+      domainSharingPolicy:
         type: string
         required: false
         description: |
           The domain sharing policy for the current user. Possible values are:
-          
+
           - **allowed**
           - **allowedWithWarning**
           - **incomingOnly**
           - **disallowed**
-      permissionId: 
+      permissionId:
         type: string
         required: false
         description: The current user's ID as visible in the permissions collection.
-      importFormats: 
+      importFormats:
         type: ImportFormat[]
         required: false
         description: The allowable import formats.
-      exportFormats: 
+      exportFormats:
         type: ExportFormat[]
         required: false
         description: The allowable export formats.
-      additionalRoleInfo: 
+      additionalRoleInfo:
         type: AdditionalRoleInfo[]
         required: false
         description: Information about supported additional roles per file type. The most specific type takes precedence.
-      features: 
+      features:
         type: Feature[]
         required: false
         description: List of additional features enabled on this account.
-      maxUploadSizes: 
+      maxUploadSizes:
         type: UploadSize[]
         required: false
         description: List of max upload sizes for each file type. The most specific type takes precedence.
-      isCurrentAppInstalled: 
+      isCurrentAppInstalled:
         type: boolean
         required: false
         description: A boolean indicating whether the authenticated app is installed by the authenticated user.
-      languageCode: 
+      languageCode:
         type: string
         required: false
         description: The user's language or locale code, as defined by BCP 47, with some extensions from Unicode's LDML format (http://www.unicode.org/reports/tr35/).
-      folderColorPalette: 
+      folderColorPalette:
         type: string[]
         required: false
         description: The palette of allowable folder colors as RGB hex strings.

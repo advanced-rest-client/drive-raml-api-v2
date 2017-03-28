@@ -47,7 +47,7 @@ types:
         type: array
         required: false
         description: Additional roles for this user. Only `commenter` is currently allowed.
-        items: [string]
+        items: string
       type:
         type: string
         required: false
@@ -66,7 +66,7 @@ types:
         required: false
         description: The authkey parameter required for this permission.
       withLink:
-        type: string
+        type: boolean
         required: false
         description: Whether the link is required for this permission
       photoLink:
@@ -93,7 +93,7 @@ types:
         type: array
         required: false
         description: Additional roles for this user. Only `commenter` is currently allowed.
-        items: [string]
+        items: string
       type:
         type: string
         required: false
@@ -108,7 +108,7 @@ types:
         required: false
         description: The email address or domain name for the entity. This is used during inserts and is not populated in responses. When making a `drive.permissions.insert` request, exactly one of the `id` or `value` fields must be specified.
       withLink:
-        type: string
+        type: boolean
         required: false
         description: Whether the link is required for this permission
   PermissionList:
@@ -132,7 +132,7 @@ types:
         type: array
         required: false
         description: The actual list of permissions.
-        items: [Permission]
+        items: Permission
   PermissionId:
     type: object
     properties:

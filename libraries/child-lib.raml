@@ -4,7 +4,7 @@ types:
   Child:
     type: object
     description: A reference to a folder's child.
-    properties: 
+    properties:
       kind:
         type: string
         required: false
@@ -25,7 +25,7 @@ types:
         description: A link to the child.
   ChildrenList:
     type: object
-    properties: 
+    properties:
       kind:
         type: string
         required: false
@@ -50,4 +50,4 @@ types:
         type: array
         required: false
         description: The actual list of children.
-        items: [Child]
+        items: Child

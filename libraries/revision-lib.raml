@@ -9,9 +9,9 @@ types:
         type: boolean
         required: false
         description: |
-          Whether this revision is pinned to prevent automatic purging. 
-          This will only be populated and can only be modified on files with content stored in 
-          Drive which are not Google Docs. Revisions can also be pinned when they are created 
+          Whether this revision is pinned to prevent automatic purging.
+          This will only be populated and can only be modified on files with content stored in
+          Drive which are not Google Docs. Revisions can also be pinned when they are created
           through the drive.files.insert/update/copy by using the pinned query parameter.
       published:
         type: boolean
@@ -65,9 +65,9 @@ types:
       exportLinks:
         type: object
         required: false
-        description: | 
+        description: |
           Links for exporting Google Docs to specific formats.
-          
+
           Keys in the object is a mapping from export format to URL.
       lastModifyingUserName:
         type: string
@@ -91,10 +91,10 @@ types:
   RevisionInsert:
     description: An object used to create / update the revision resource.
     type: RevisionBase
-      
+
   RevisionList:
     type: object
-    properties: 
+    properties:
       kind:
         type: string
         required: false
@@ -113,4 +113,4 @@ types:
         type: array
         required: false
         description: The actual list of revisions.
-        items: [Revision]
+        items: Revision

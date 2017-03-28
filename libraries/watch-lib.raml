@@ -31,9 +31,21 @@ types:
       file:
         type: DriveFile.DriveFile
         description: The updated state of the file. Present if the file has not been deleted.
+        required: false
       modificationDate:
         type: datetime
         description: The time of this modification.
+      type:
+        type: string
+        description: The type of the change. Possible values are `file` and `teamDrive`.
+      teamDriveId:
+        type: string
+        description: The ID of the Team Drive associated with this change.
+        required: false
+      teamDrive:
+        description: The updated state of the Team Drive. Present if the type is teamDrive, the user is still a member of the Team Drive, and the Team Drive has not been deleted.
+        type: !include ../types/team-drive.raml
+        required: false
   ChangeList:
     type: object
     properties:
@@ -58,13 +70,13 @@ types:
         type: string
         description: A link to the next page of changes.
       largestChangeId:
-        type: number
+        type: string
         description: The current largest change ID.
       items:
         type: array
         required: false
         description: The actual list of changes.
-        items: [Change]
+        items: Change
   Watch:
     type: object
     properties:

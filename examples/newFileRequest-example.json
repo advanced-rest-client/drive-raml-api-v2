@@ -2,7 +2,9 @@
   "id": "string",
   "title" : "My file to insert" ,
   "description" : "This is a test file to be inserted to my Google Drive folder",
-  "indexableText": "Test upload",
+  "indexableText": {
+    "text": "Test upload"
+  },
   "mimeType": "application/json",
   "labels" : {
     "starred" : false,

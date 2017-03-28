@@ -2,6 +2,7 @@
 
 uses:
   PermissionsLib: permission-lib.raml
+  Annotations: annotations.raml
 
 types:
   Thumbnail: !include ../types/thumbnail.raml
@@ -10,6 +11,8 @@ types:
   Resource: !include ../types/resource.raml
   Owners: !include ../types/owners.raml
   Picture: !include ../types/picture.raml
+  FileCapabilities: !include ../types/file-capabilities.raml
+  Property: !include ../types/property.raml
   DriveFile:
     properties:
       kind:
@@ -112,7 +115,7 @@ types:
         description: Time at which this file was shared with the user (formatted RFC 3339 timestamp).
       version:
         required: false
-        type: integer
+        type: string
         description: A monotonically increasing version number for the file. This reflects every change made to the file on the server, even those not visible to the requesting user.
       sharingUser:
         type: User
@@ -164,22 +167,88 @@ types:
         required: false
         description: The size of the file in bytes. This field is only populated for files with content stored in Drive; it is not populated for Google Docs or shortcut files.
       quotaBytesUsed:
-        type: integer
+        type: string
         required: false
         description: The number of quota bytes used by this file.
       ownerNames:
         type: array
         required: false
-        items: [string]
+        items: string
         description: Name(s) of the owner(s) of this file.
       owners:
         type: Owners[]
         required: false
         description: The owner(s) of this file.
+      ownedByMe:
+        type: boolean
+        required: false
+        description: Whether the file is owned by the current user. Not populated for Team Drive files.
+      canComment:
+        type: boolean
+        required: false
+        (Annotations.deprecated):
+        description: |
+          Whether the current user can comment on the file.
+
+          **Deprecated: use capabilities/canComment.**
+      shareable:
+        type: boolean
+        required: false
+        (Annotations.deprecated):
+        description: |
+          Whether the file's sharing settings can be modified by the current user.
+
+          **Deprecated: use capabilities/canShare.**
       lastModifyingUserName:
         type: string
         required: false
         description: Name of the last user to modify this file
+      properties:
+        type: Property[]
+        description: The list of properties.
+        required: false
+      spaces:
+        type: string[]
+        required: false
+        description: |
+          The list of spaces which contain the file.
+          Supported values are `drive`, `appDataFolder` and `photos`.
+      canReadRevisions:
+        type: boolean
+        required: false
+        (Annotations.deprecated):
+        description: |
+          Whether the current user has read access to the Revisions resource of the file.
+
+          **Deprecated: use capabilities/canReadRevisions.**
+      isAppAuthorized:
+        type: boolean
+        description: Whether the file was created or opened by the requesting app.
+        required: false
+      hasThumbnail:
+        type: boolean
+        description: Whether this file has a thumbnail.
+        required: false
+      thumbnailVersion:
+        required: false
+        type: string
+        description: |
+          The thumbnail version for use in thumbnail cache invalidation.
+          The actual type is long but in the API is represented as a string.
+      hasAugmentedPermissions:
+        required: false
+        type: boolean
+        description: |
+          Whether any users are granted file access directly on this file.
+          This field is only populated for Team Drive files.
+      teamDriveId:
+        type: string
+        description: ID of the Team Drive the file resides in.
+        required: false
+      capabilities:
+        description: Capabilities the current user has on the file. Each capability corresponds to a fine-grained action that a user may take.
+        type: FileCapabilities
+        required: false
       lastModifyingUser:
         type: object
         required: false
@@ -204,12 +273,22 @@ types:
           emailAddress:
             type: string
             description: The email address of the user. This field is returned only if the last modifying user is an owner of the file, the requesting user is an owner or can modify the file, or if the last modifying user's email address is visible.
+      trashingUser:
+        type: User
+        description: If the file has been explicitly trashed, the user who trashed it. Only populated for Team Drive files.
+        required: false
+      trashedDate:
+        required: false
+        type: datetime
+        description: The time that the item was trashed (formatted RFC 3339 timestamp). Only populated for Team Drive files.
       editable:
         type: boolean
         description: Whether the file can be edited by the current user.
+        (Annotations.deprecated):
       copyable:
         type: boolean
         description: Whether the file can be copied by the current user.
+        (Annotations.deprecated):
       writersCanShare:
         type: boolean
         description: Whether writers can share the document with other users
@@ -390,6 +469,7 @@ types:
         type: datetime
         description: Deprecated
         required: false
+        (Annotations.deprecated):
       parents:
         type: Resource[]
         required: false

@@ -13,6 +13,6 @@
   "type" : "string" ,
   "value" : "string" ,
   "authKey" : "string" ,
-  "withLink" : "boolean" ,
+  "withLink" : true ,
   "photoLink" : "string"
 }

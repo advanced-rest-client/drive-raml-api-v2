@@ -92,10 +92,7 @@
    "writersCanShare": true,
    "shared": false,
    "explicitlyTrashed": false,
-   "appDataContents": false,
-   "spaces": [
-    "drive"
-   ]
+   "appDataContents": false
   }
  ]
 }

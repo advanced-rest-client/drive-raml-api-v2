@@ -117,10 +117,9 @@ types:
         required: false
         description: A link to the next page of comments.
       items:
-        type: array
+        type: Comment[]
         required: false
         description: The actual list of comments.
-        items: [Comment]
   ReplyList:
     properties:
       kind:
@@ -131,14 +130,16 @@ types:
       nextPageToken:
         type: string
         description: The token to use to request the next page of results.
+        required: false
       selfLink:
         type: string
         description: A link back to this list.
       nextLink:
         type: string
         description: A link to the next page of comments.
+        required: false
       items:
         type: array
         required: false
         description: The actual list of reply.
-        items: [Reply]
+        items: Reply
